@@ -1,27 +1,27 @@
 close all;clear;clc
 % spare representation¡ªbased classification
 tic;
-m_person =20;
-m_image =30;
+load('nums_person.mat');
+load('nums_image');
 load('face.mat');  % load face allface dataset
-person_label = 4;   %1-20£¬
-test_path =['D:\faceSRC\resource\occlusion_img\yaleB04_1.pgm'];
+person_label = 12;   %1-20£¬
+test_path =['D:\faceSRC\resource\occlusion_img\yaleB12_2.pgm'];
 testImg = imread(test_path);
 figure,imshow(testImg),title('Test');
 testImg = imresize(testImg,[12,10],'lanczos3');
 testImg = double(testImg(:));
 
 %L1 regression by Lasso;
-x_spare = myLASSO(dataset,testImg,m_person*m_image);
+x_spare = myLASSO(dataset,testImg,nums_person*nums_image);
 
 % ÖÃÐÅ¶È
-binTrue = zeros(1,m_person);
+binTrue = zeros(1,nums_person);
 n =1;
-m =m_image;
-for i =1:m_person
+m =nums_image;
+for i =1:nums_person
     binTrue(:,i) = sum(x_spare(n:m,:));
-    n = n+m_image;
-    m = m+m_image;
+    n = n+nums_image;
+    m = m+nums_image;
 end
 x=1:1:20;
 figure,

@@ -1,11 +1,15 @@
 close all;clear;clc
 % spare representation—based classification
 tic;
-m_person =20; %训练集人数
-m_image =30;  %每人的图片数
+load('nums_person.mat');
+load('nums_image');
 load('face.mat');  % load face allface dataset
-person_label = 10;   %1-20，
-num_img = 31;        %31-65, 
+
+% select test person and image.
+person_label = 18;   %1-20，
+num_img = 62;        %61-63, 
+
+
 test_path =['D:\faceSRC\resource\yaleB',num2str(person_label),'\',num2str(num_img),'.pgm'];
 testImg = imread(test_path);
 figure,imshow(testImg),title('Test');
@@ -13,16 +17,16 @@ testImg = imresize(testImg,[12,10],'lanczos3');
 testImg = double(testImg(:));
 
 %L1 regression by Lasso;
-x_spare = myLASSO(dataset,testImg,m_person*m_image);
+x_spare = myLASSO(dataset,testImg,nums_person*nums_image);
 
 % 置信度
-binTrue = zeros(1,m_person);
+binTrue = zeros(1,nums_person);
 n =1;
-m =m_image;
-for i =1:m_person
+m =nums_image;
+for i =1:nums_person
     binTrue(:,i) = sum(x_spare(n:m,:));
-    n = n+m_image;
-    m = m+m_image;
+    n = n+nums_image;
+    m = m+nums_image;
 end
 x=1:1:20;
 figure,
