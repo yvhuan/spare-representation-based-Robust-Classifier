@@ -6,7 +6,7 @@ load('nums_image');
 load('face.mat');  % load face allface dataset
 
 % select test person 
-person_label = 10;   %1-20£¬
+person_label = 26;   %1-30
 right = 0;
 
 for j = 1:nums_image
@@ -14,7 +14,7 @@ for j = 1:nums_image
     j
     test_path =['D:\faceSRC\resource\yaleB',num2str(person_label),'\',num2str(2*j),'.pgm'];
     testImg = imread(test_path);
-    figure,imshow(testImg),title('Test');
+    figure,imshow(testImg);
     testImg = imresize(testImg,[12,10],'lanczos3');
     testImg = double(testImg(:));
 
@@ -39,5 +39,7 @@ for j = 1:nums_image
         disp('is false')
     end
 end
+
+
 right_rate = right/30
 toc;
