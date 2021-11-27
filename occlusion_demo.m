@@ -4,8 +4,8 @@ tic;
 load('nums_person.mat');
 load('nums_image');
 load('face.mat');  % load face allface dataset
-person_label = 12;   %1-20£¬
-test_path =['D:\faceSRC\resource\occlusion_img\yaleB12_2.pgm'];
+person_label = 28;   %1-20£¬
+test_path =['D:\faceSRC\resource\occlusion_img\yaleB28_1.pgm'];
 testImg = imread(test_path);
 figure,imshow(testImg),title('Test');
 testImg = imresize(testImg,[12,10],'lanczos3');

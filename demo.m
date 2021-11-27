@@ -6,8 +6,8 @@ load('nums_image');
 load('face.mat');  % load face allface dataset
 
 % select test person and image.
-person_label = 18;   %1-20£¬
-num_img = 62;        %61-63, 
+person_label = 28;   %1-20£¬
+num_img = 1;        %61-63, 
 
 
 test_path =['D:\faceSRC\resource\yaleB',num2str(person_label),'\',num2str(num_img),'.pgm'];
