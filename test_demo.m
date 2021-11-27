@@ -25,8 +25,8 @@ for j = 1:nums_image
     binTrue = zeros(1,nums_person);
     n =1;
     m =nums_image;
-    for j =1:nums_person
-        binTrue(:,j) = sum(x_spare(n:m,:));
+    for i =1:nums_person
+        binTrue(:,i) = sum(x_spare(n:m,:));
         n = n+nums_image;
         m = m+nums_image;
     end
